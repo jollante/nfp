@@ -75,6 +75,18 @@ backBtnZyklusDay.onclick = function () {
     btnClickEvents(zyklusDayCounterDown, comparison)
 }
 
+function setInputValues() {
+    if (!zyklusData[zyklusDay.innerHTML - 1]) {
+        tempData.value = '';
+        sexData.checked = false;
+        period.value = '';
+    } else {
+        tempData.value = zyklusData[zyklusDay.innerHTML - 1].temp;
+        sexData.checked = zyklusData[zyklusDay.innerHTML - 1].sex;
+        period.value = zyklusData[zyklusDay.innerHTML - 1].period;
+    }
+}
+
 function btnClickEvents(counterUpOrDown, comparison) {
     console.log(period.value);
     let zyklusDayData = new ZyklusDay(zyklusCounter, parseInt(zyklusDay.innerHTML), period.value, tempData.value, sexData.checked);
@@ -85,15 +97,7 @@ function btnClickEvents(counterUpOrDown, comparison) {
                     zyklusData.push(new ZyklusDay(zyklusCounter, parseInt(zyklusDay.innerHTML), '', '', false));
                     zyklusDayCounter = counterUpOrDown;
                     zyklusDay.innerHTML = zyklusDayCounter;
-                    if (!zyklusData[zyklusDay.innerHTML - 1]) {
-                        tempData.value = '';
-                        sexData.checked = false;
-                        period.value = '';
-                    } else {
-                        tempData.value = zyklusData[zyklusDay.innerHTML - 1].temp;
-                        sexData.checked = zyklusData[zyklusDay.innerHTML - 1].sex;
-                        period.value = zyklusData[zyklusDay.innerHTML - 1].period;
-                    }
+                    setInputValues();
                 }
             }
         } else {
@@ -101,15 +105,7 @@ function btnClickEvents(counterUpOrDown, comparison) {
                 zyklusData.push(new ZyklusDay(zyklusCounter, parseInt(zyklusDay.innerHTML), '', '', false));
                 zyklusDayCounter = counterUpOrDown;
                 zyklusDay.innerHTML = zyklusDayCounter;
-                if (!zyklusData[zyklusDay.innerHTML - 1]) {
-                    tempData.value = '';
-                    sexData.checked = false;
-                    period.value = '';
-                } else {
-                    tempData.value = zyklusData[zyklusDay.innerHTML - 1].temp;
-                    sexData.checked = zyklusData[zyklusDay.innerHTML - 1].sex;
-                    period.value = zyklusData[zyklusDay.innerHTML - 1].period;
-                }
+                setInputValues(); 
             }
 
         }
@@ -122,15 +118,7 @@ function btnClickEvents(counterUpOrDown, comparison) {
                         zyklusData.push(new ZyklusDay(zyklusCounter, parseInt(zyklusDay.innerHTML), '', '', false));
                         zyklusDayCounter = counterUpOrDown;
                         zyklusDay.innerHTML = zyklusDayCounter;
-                        if (!zyklusData[zyklusDay.innerHTML - 1]) {
-                            tempData.value = '';
-                            sexData.checked = false;
-                            period.value = '';
-                        } else {
-                            tempData.value = zyklusData[zyklusDay.innerHTML - 1].temp;
-                            sexData.checked = zyklusData[zyklusDay.innerHTML - 1].sex;
-                            period.value = zyklusData[zyklusDay.innerHTML - 1].period;
-                        }
+                        setInputValues();
                     }
                 }
             } else {
@@ -138,30 +126,14 @@ function btnClickEvents(counterUpOrDown, comparison) {
                     zyklusData.push(new ZyklusDay(zyklusCounter, parseInt(zyklusDay.innerHTML), '', '', false));
                     zyklusDayCounter = counterUpOrDown;
                     zyklusDay.innerHTML = zyklusDayCounter;
-                    if (!zyklusData[zyklusDay.innerHTML - 1]) {
-                        tempData.value = '';
-                        sexData.checked = false;
-                        period.value = '';
-                    } else {
-                        tempData.value = zyklusData[zyklusDay.innerHTML - 1].temp;
-                        sexData.checked = zyklusData[zyklusDay.innerHTML - 1].sex;
-                        period.value = zyklusData[zyklusDay.innerHTML - 1].period;
-                    }
+                    setInputValues();
                 }
             }
         } else {
             if (zyklusDayCounter > comparison) {
                 zyklusDayCounter = counterUpOrDown;
                 zyklusDay.innerHTML = zyklusDayCounter;
-                if (!zyklusData[zyklusDay.innerHTML - 1]) {
-                    tempData.value = '';
-                    sexData.checked = false;
-                    period.value = '';
-                } else {
-                    tempData.value = zyklusData[zyklusDay.innerHTML - 1].temp;
-                    sexData.checked = zyklusData[zyklusDay.innerHTML - 1].sex;
-                    period.value = zyklusData[zyklusDay.innerHTML - 1].period;
-                }
+                setInputValues();
             }
         }
         console.log(zyklusData);
