@@ -1,0 +1,90 @@
+/* Style für NFP 2022 von Jelenka C. */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: sans-serif;
+}
+
+.app {
+    width: 250px;
+    height: 400px;
+    background-color: rgb(219, 255, 241);
+    margin: auto;
+
+}
+
+.wrapper {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.wrapper div {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.app button {
+    margin-top: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5em 1em;
+}
+
+.zyklus-data {
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+}
+
+input {
+    margin-bottom: 10px;
+    width: 70%;
+}
+
+select {
+    margin-bottom: 10px;
+    width: 70%;
+}
+
+fieldset {
+    border: none;
+}
+
+input[type='checkbox'] {
+   margin: 0;
+
+} 
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    opacity: 1;
+    transition: opacity 1000ms; 
+}
+
+.visibility-hidden {
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+#fade {
+    text-align: center;
+    color: green;
+}
+
+.btn-wrapper-zyklus-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

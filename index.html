@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFP 2022</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div>
+        <div class="app" id="app">
+            <div class="wrapper">
+                <div>back</div>
+                <div>Platzhalter</div>
+                <div>for</div>
+            </div>
+            <button id="new-zyklus">neuer Zyklus</button>
+        </div>
+    </div>
+    <div class="app hidden" id="zyklus-data-app">
+        <p>Zyklus Nr. <span id="zyklus-number"></span></p>
+        <div>
+            <p>Tag <span id="day">1</span></p>
+        </div>
+        
+        <form >
+            <fieldset class="zyklus-data">      
+                <label for="temp">Temp</label>
+                <input id="temp" type="number" min="34" max="42" step="0.05">
+                <label for="period">Blutung</label>
+                <select id="period">
+                    <option value=""></option>
+                    <option value="keine">keine</option>
+                    <option value="schmier">schmier</option>
+                    <option value="leicht">leicht</option>
+                    <option value="normal">normal</option>
+                    <option value="stark">stark</option>
+                </select>
+                <label for="sex">Sex</label>
+                <input id="sex" type="checkbox">
+            </fieldset>    
+            <button id="save-data">Speichern</button>
+            <p id="fade" class="visibility-hidden">gespeichert</p>
+        </form>
+        <div class="btn-wrapper-zyklus-data">
+            <button id="back-btn-zyklus-data">back</button>
+            <button id="for-btn-zyklus-data">for</button>
+        </div>  
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
