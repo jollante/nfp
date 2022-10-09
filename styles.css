@@ -7,53 +7,76 @@
 html,
 body {
     margin: 0;
-    padding: 0;
 }
 
 html {
+    background-color: #b14f8c;
     font-family: sans-serif;
 }
 
 .app {
-    width: 250px;
-    height: 400px;
-    background-color: rgb(219, 255, 241);
-    margin: auto;
-
+    border-radius: 7px;
+    width: 360px;
+    height: 305px;
+    background-color: #ffffff;
+    margin: 2em auto 0em auto;
+    padding: 20px;
 }
 
-.wrapper {
-    margin-top: 30px;
+.grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
-.wrapper div {
-    margin-top: 30px;
-    text-align: center;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr;
+    align-content: center;
+    justify-content: center;
 }
 
 .app button {
-    margin-top: 30px;
+    margin-top: 20px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     padding: 0.5em 1em;
 }
 
+.back-btn-zyklus-number-wrapper {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 4fr;
+}
+
+.back-btn-zyklus-number-wrapper button {
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.grid button {
+    margin-top: 0;
+}
+
+.app h1 {
+    color: #1c7f88;
+    font-size: 24px;
+    margin: 0;
+    align-self: center;
+}
+
 .zyklus-data {
     display: grid;
-    grid-template-columns:  1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 input {
     margin-bottom: 10px;
-    width: 70%;
+    width: 80%;
+    height: 22px;
 }
 
 select {
     margin-bottom: 10px;
-    width: 70%;
+    width: 80%;
+    height: 22px;
 }
 
 fieldset {
@@ -61,17 +84,58 @@ fieldset {
 }
 
 input[type='checkbox'] {
-   margin: 0;
+    margin: 0;
+    height: 22px;
+    width: 18px;
+}
 
-} 
+input[type='checkbox'][disabled] {
+    background-color: white;
+    color: black;
+    justify-self: start;
+    align-self: start;
+}
 
-.hidden {
+input[disabled] {
+    border: none;
+    color: black;
+}
+
+select[disabled] {
+    position: relative;
+    left: -2px;
+    border: none;
+    color: black;
+}
+
+select[disabled] {
+    background-color: rgb(238, 244, 239);
+    /* for Firefox */
+    -moz-appearance: none;
+    /* for Chrome */
+    -webkit-appearance: none;
+}
+
+/* For IE10 */
+select[disabled]::-ms-expand {
     display: none;
+}
+
+/* Firefox */
+input[type=number]:disabled {
+    background-color: rgb(238, 244, 239);
+    -moz-appearance: textfield;
+}
+
+.day {
+    font-size: 18px;
+    margin-top: 6px;
+    margin-bottom: 10px;
 }
 
 .visible {
     opacity: 1;
-    transition: opacity 1000ms; 
+    transition: opacity 1000ms;
 }
 
 .visibility-hidden {
@@ -80,11 +144,112 @@ input[type='checkbox'] {
 }
 
 #fade {
+    margin-bottom: 5px;
+    margin-top: 5px;
     text-align: center;
-    color: green;
+    color: #42ada3;
+}
+
+.btn-wrapper-zyklus-data {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+button {
+    font-size: 20px;
+    padding: .9em 2em;
+    background-color: #42ada3;
+    color: #ffffff;
+    border-radius: 4px;
+    border: none;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+.btn-wrapper-zyklus-data button {
+    font-size: 16px;
+    margin-top: 0;
+    background-color: #b14f8c;
+    color: #ffffff;
 }
 
 .btn-wrapper-zyklus-data {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
 }
+
+#save-data {
+    background-color: #42ada3;
+}
+
+.btn-wrapper-zyklus-data svg {
+    height: 18px;
+    width: 14px;
+
+}
+
+svg path {
+    fill: white !important;
+}
+
+#edit-btn {
+    background-color: #b14f8c;
+}
+
+
+.zyklus-input-wrapper {
+    margin-top: 10px;
+    padding-top: 5px;
+    border: 2px solid #42ada3;
+    border-radius: 5px;
+}
+
+.zyklus-input-wrapper p {
+    padding-left: 12px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#for-btn-zyklus-data {
+    line-height: 0;
+}
+
+#back-btn-zyklus-data {
+    line-height: 0;
+}
+
+.disabled {
+    background-color: rgb(238, 244, 239);
+    border: 2px solid rgb(238, 244, 239);
+}
+
+#save-data {
+    width: 115px;
+}
+
+#edit-btn {
+    width: 115px;
+}
+
+@media screen and (max-width: 380px) {
+    .app {
+        width: 340px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .app {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+

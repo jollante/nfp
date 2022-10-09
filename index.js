@@ -1,12 +1,17 @@
 let newZyklusButton = document.getElementById('new-zyklus');
 let forBtnZyklusDay = document.getElementById('for-btn-zyklus-data');
 let backBtnZyklusDay = document.getElementById('back-btn-zyklus-data');
+let editBtn = document.getElementById('edit-btn')
+let homeBtn = document.getElementById('home-btn')
 let saveZyklusData = document.getElementById('save-data');
+let zyklusInputWrapper = document.getElementsByClassName('zyklus-input-wrapper')
 let zyklusNumber = document.getElementById('zyklus-number');
 let zyklusDay = document.getElementById('day');
 let tempData = document.getElementById('temp');
 let sexData = document.getElementById('sex');
 let period = document.getElementById('period');
+let zyklusDataApp = document.getElementById("zyklus-data-app");
+let app = document.getElementById("app")
 
 let savedFade = document.getElementById('fade');
 
@@ -25,15 +30,18 @@ class ZyklusDay {
 }
 
 newZyklusButton.onclick = function () {
+    if (!zyklusData[zyklusDay.innerHTML - 1]) {
     zyklusNumber.innerHTML = zyklusCounter;
-    let tempData = document.getElementById("temp");
-    let sexData = document.getElementById('sex');
-    let period = document.getElementById('period');
     tempData.value = '';
     sexData.checked = false;
     period.value = '';
-    let zyklusDataApp = document.getElementById("zyklus-data-app");
-    let app = document.getElementById("app")
+    }
+    zyklusDataApp.classList.toggle("hidden");
+    app.classList.toggle("hidden");
+}
+
+homeBtn.onclick = function () {
+
     zyklusDataApp.classList.toggle("hidden");
     app.classList.toggle("hidden");
 }
@@ -44,13 +52,35 @@ function savedFeedback() {
     savedFade.classList.toggle('visible')
 }
 
+
+function toggleSaveEditBtnsDisableInput() {
+    if (tempData.disabled == true) {
+        tempData.disabled = false;
+        sexData.disabled = false;
+        period.disabled = false;
+        if (!editBtn.classList.contains('hidden')) {
+            zyklusInputWrapper[0].classList.remove('disabled')
+            editBtn.classList.add('hidden');
+            saveZyklusData.classList.remove('hidden');
+        }
+    } else {
+        tempData.disabled = true;
+        sexData.disabled = true;
+        period.disabled = true;
+        if (editBtn.classList.contains('hidden')) {
+            zyklusInputWrapper[0].classList.add('disabled')
+            editBtn.classList.remove('hidden');
+            saveZyklusData.classList.add('hidden');
+        }
+    }
+}
+
 function lookUpValues() {
     const areThereInputValues = tempData.value !== '' || sexData.checked !== false || period.value !== '';
     return areThereInputValues;
 }
 
 saveZyklusData.onclick = function (event) {
-    console.log(period.value);
     event.preventDefault();
     lookUpValues();
     let zyklusDayData = new ZyklusDay(zyklusCounter, parseInt(zyklusDay.innerHTML), period.value, tempData.value, sexData.checked);
@@ -60,7 +90,12 @@ saveZyklusData.onclick = function (event) {
         zyklusData[zyklusDay.innerHTML - 1] = zyklusDayData;
     }
     savedFeedback();
-    setTimeout(savedFeedback, 1300);
+    setTimeout(savedFeedback, 1200);
+    setTimeout(toggleSaveEditBtnsDisableInput, 1300);
+}
+
+editBtn.onclick = function () {
+    toggleSaveEditBtnsDisableInput();
 }
 
 forBtnZyklusDay.onclick = function () {
@@ -80,15 +115,22 @@ function setInputValues() {
         tempData.value = '';
         sexData.checked = false;
         period.value = '';
+        if (tempData.disabled == true) {
+            toggleSaveEditBtnsDisableInput();
+        }
     } else {
         tempData.value = zyklusData[zyklusDay.innerHTML - 1].temp;
         sexData.checked = zyklusData[zyklusDay.innerHTML - 1].sex;
         period.value = zyklusData[zyklusDay.innerHTML - 1].period;
+        if (tempData.disabled == false && lookUpValues() == true) {
+            toggleSaveEditBtnsDisableInput();
+        } else if (tempData.disabled == true && lookUpValues() == false) {
+            toggleSaveEditBtnsDisableInput();
+        }
     }
 }
 
 function btnClickEvents(counterUpOrDown, comparison) {
-    console.log(period.value);
     let zyklusDayData = new ZyklusDay(zyklusCounter, parseInt(zyklusDay.innerHTML), period.value, tempData.value, sexData.checked);
     if (!zyklusData[zyklusDay.innerHTML - 1]) {
         if (lookUpValues() == true) {
@@ -105,7 +147,7 @@ function btnClickEvents(counterUpOrDown, comparison) {
                 zyklusData.push(new ZyklusDay(zyklusCounter, parseInt(zyklusDay.innerHTML), '', '', false));
                 zyklusDayCounter = counterUpOrDown;
                 zyklusDay.innerHTML = zyklusDayCounter;
-                setInputValues(); 
+                setInputValues();
             }
 
         }
@@ -136,7 +178,6 @@ function btnClickEvents(counterUpOrDown, comparison) {
                 setInputValues();
             }
         }
-        console.log(zyklusData);
     }
 }
 

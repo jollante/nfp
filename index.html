@@ -10,45 +10,63 @@
 </head>
 
 <body>
-    <div>
-        <div class="app" id="app">
-            <div class="wrapper">
-                <div>back</div>
-                <div>Platzhalter</div>
-                <div>for</div>
-            </div>
-            <button id="new-zyklus">neuer Zyklus</button>
+
+    <div class="app" id="app">
+        <div class="app-wrapper grid">
+            <button id="new-zyklus">Neuer Zyklus</button>
         </div>
     </div>
+
     <div class="app hidden" id="zyklus-data-app">
-        <p>Zyklus Nr. <span id="zyklus-number"></span></p>
-        <div>
-            <p>Tag <span id="day">1</span></p>
-        </div>
-        
-        <form >
-            <fieldset class="zyklus-data">      
-                <label for="temp">Temp</label>
-                <input id="temp" type="number" min="34" max="42" step="0.05">
-                <label for="period">Blutung</label>
-                <select id="period">
-                    <option value=""></option>
-                    <option value="keine">keine</option>
-                    <option value="schmier">schmier</option>
-                    <option value="leicht">leicht</option>
-                    <option value="normal">normal</option>
-                    <option value="stark">stark</option>
-                </select>
-                <label for="sex">Sex</label>
-                <input id="sex" type="checkbox">
-            </fieldset>    
-            <button id="save-data">Speichern</button>
+        <div class="app-wrapper">
+            <div class="back-btn-zyklus-number-wrapper">
+                <button id="home-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 169.87 158.26"><path d="m168.02 63.34-36.19-28.61L90.1 1.74c-2.94-2.32-7.4-2.32-10.33 0L38.03 34.73 1.84 63.34c-3.77 2.98-1.37 8.47 3.71 8.47h13.8v60.34c0 14.42 11.69 26.11 26.11 26.11h17.35v-44.62c0-5.57 4.52-10.09 10.09-10.09h24.06c5.57 0 10.09 4.52 10.09 10.09v44.62h17.35c14.42 0 26.11-11.69 26.11-26.11V71.81h13.8c5.07 0 7.48-5.49 3.71-8.47Z" style="fill:#1d1d1b"/></svg></button>
+                <h1>Zyklus <span id="zyklus-number"></span></h1>
+            </div>   
+            <form>
+                <div class="zyklus-input-wrapper">
+                    <p class="day">Tag <span id="day">1</span></p>
+                    <fieldset class="zyklus-data">
+                        <label for="temp">Temp</label>
+                        <input id="temp" type="number" min="34" max="42" step="0.05">
+                        <label for="period">Blutung</label>
+                        <select id="period">
+                            <option value=""></option>
+                            <option value="keine">keine</option>
+                            <option value="schmier">schmier</option>
+                            <option value="leicht">leicht</option>
+                            <option value="normal">normal</option>
+                            <option value="stark">stark</option>
+                        </select>
+                        <label for="sex">Sex</label>
+                        <input id="sex" type="checkbox">
+                    </fieldset>
+                </div>
+
+            </form>
+            <div class="btn-wrapper-zyklus-data">
+                <button id="back-btn-zyklus-data"><svg xmlns="http://www.w3.org/2000/svg" width="260" height="345"
+                        viewBox="0 0 68.792 91.281">
+                        <path style="fill:#000;stroke-width:.499999;stroke-linecap:round;stroke-linejoin:round"
+                            d="M90.266 22.204 31.811 61.85a6.23 6.23 90 0 0 0 10.313l58.455 39.645a4.87 4.87 152.073 0 0 7.603-4.03V26.235a4.87 4.87 27.927 0 0-7.603-4.03z"
+                            transform="translate(-29.078 -21.365)" />
+                    </svg>
+                </button>
+                <button type="button" id="save-data">Speichern</button>
+                <button type="button" id="edit-btn" class="hidden">Bearbeiten</button>
+             
+                <button id="for-btn-zyklus-data"><svg xmlns="http://www.w3.org/2000/svg" width="260" height="345"
+                        viewBox="0 0 68.792 91.281">
+                        <path style="fill:#000;stroke-width:.499999;stroke-linecap:round;stroke-linejoin:round"
+                            d="M36.68 22.204 95.136 61.85a6.23 6.23 90 0 1 0 10.313L36.68 111.807a4.87 4.87 27.927 0 1-7.602-4.03V26.235a4.87 4.87 152.073 0 1 7.602-4.03z"
+                            transform="translate(-29.078 -21.365)" />
+                    </svg></button>
+                   
+            </div>
             <p id="fade" class="visibility-hidden">gespeichert</p>
-        </form>
-        <div class="btn-wrapper-zyklus-data">
-            <button id="back-btn-zyklus-data">back</button>
-            <button id="for-btn-zyklus-data">for</button>
-        </div>  
+
+        </div>
+
     </div>
     <script src="index.js"></script>
 </body>
